@@ -39,10 +39,10 @@ public:
 		return false;
 	}
 
-	static int ReadIntNumber(string ErrorMessage = "Invalid Number, Enter Again: ") {
+	static int ReadIntNumber(string Message = "", string ErrorMessage = "Invalid Number, Enter Again: ") {
 		int Number = 0;
 
-		cout << "Please Enter a number?\n";
+		cout << Message;
 		cin >> Number;
 
 		while (cin.fail()) {

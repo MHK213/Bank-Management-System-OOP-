@@ -18,7 +18,7 @@ private:
 	string _AccountNumber;
 	string _PinCode;
 	float _AccountBalance;
-	bool _MarkForDelete;
+	bool _MarkForDelete = false;
 
 	static clsBankClient _ConvertLineToClientObject(string Line, string Seprator = "#//#") {
 
@@ -156,7 +156,7 @@ public:
 
 	__declspec (property(get = GetAccountBalance, put = SetAccountBalance)) float AccountBalance;
 
-	void Print() {
+	/*void Print() {
 		cout << "\nClient Card :";
 		cout << "\n________________________________________";
 		cout << "\nFirst Name   : " << FirstName;
@@ -168,7 +168,7 @@ public:
 		cout << "\nPinCode      : " << _PinCode;
 		cout << "\nBalance      : " << _AccountBalance;
 		cout << "\n________________________________________" << endl;
-	}
+	}*/
 
 	static clsBankClient FindClient(string AccountNumber) {
 		vector <clsBankClient> vClients;
