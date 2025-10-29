@@ -9,6 +9,7 @@
 #include "clsDeleteClientScreen.h"
 #include "clsUpdateClientScreen.h"
 #include "clsFindClientScreen.h"
+#include "clsTransactionsScreen.h"
 
 using namespace std;
 
@@ -53,8 +54,8 @@ private:
 		clsFindClientScreen::ShowFindClientScreen();
 	};
 
-	static void _ShowTransactionsMenuScreen() {
-		cout << "Transactions Menu Screen will be here...\n";
+	static void _ShowTransactionsMenu() {
+		clsTransactionsScreen::ShowTransactionsMenu();
 	};
 
 	static void _ShowManageUsersMenuScreen() {
@@ -99,7 +100,8 @@ private:
 		}
 		case enTransactions: {
 			system("cls");
-			_ShowTransactionsMenuScreen();
+			_ShowTransactionsMenu();
+			_GoBackToMainMenu();
 			break;
 		}
 		case enManageUsers: {
@@ -113,7 +115,6 @@ private:
 		}
 		}
 	}
-
 
 public:
 

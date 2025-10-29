@@ -57,10 +57,28 @@ public:
 		return Number;
 	}
 
-	static double ReadDblNumber(string ErrorMessage = "Invalid Number, Enter Again: ") {
+	static short ReadShortNumber(string Message = "", string ErrorMessage = "Invalid Number, Enter Again: ") {
+		short Number = 0;
+
+		cout << Message;
+		cin >> Number;
+
+		while (cin.fail()) {
+			cin.clear();
+			cin.ignore(std::numeric_limits < std::streamsize>::max(), '\n');
+
+			cout << ErrorMessage << endl;
+
+			cin >> Number;
+		}
+
+		return Number;
+	}
+
+	static double ReadDblNumber(string Message = "", string ErrorMessage = "Invalid Number, Enter Again: ") {
 		double Number = 0;
 
-		cout << "Please Enter a number?\n";
+		cout << Message;
 		cin >> Number;
 
 		while (cin.fail()) {
@@ -98,6 +116,17 @@ public:
 		while (!IsNumberBetween(From, To, Number)) {
 			cout << ErrorMessage;
 			Number = ReadIntNumber();
+		};
+
+		return Number;
+	}
+
+	static short ReadShortNumberBetween(short From, short To, string ErrorMessage) {
+		short Number = ReadShortNumber();
+
+		while (!IsNumberBetween(From, To, Number)) {
+			cout << ErrorMessage;
+			Number = ReadShortNumber();
 		};
 
 		return Number;
