@@ -24,7 +24,7 @@ The project is incomplete;
   ### Authentication System
   - Login and logout functionality
   - Access control based on user permissions
-  - 
+
 ## Interfaces Overview
   ### 1 - Main Interface:
    Includes options for:
