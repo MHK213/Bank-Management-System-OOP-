@@ -4,6 +4,7 @@
 #include "clsScreen.h"
 #include "clsBankClient.h"
 #include <iomanip>
+#include "clsUtil.h"
 
 using namespace std;
 
@@ -56,4 +57,3 @@ public:
 		cout << setw(8) << left << "" << "\t\t\t\t  ( " << clsUtil::NumberToText(TotalBalances) << ")";
 	}
 };
-

@@ -72,6 +72,11 @@ public:
 	static void ShowTransactionsMenu() {
 		
 		system("cls");
+
+		if (!CheckAccessRights(clsUser::enPermissions::pTransactions)) {
+			return;
+		}
+
 		_DrawScreenHeader("\t\tTransactions Screen");
 
 		cout << setw(37) << left << "" << "========================================\n";
@@ -86,4 +91,3 @@ public:
 		_PerformTransactionsMenuoption(_ReadTransactionsMenuOption());
 	}
 };
-

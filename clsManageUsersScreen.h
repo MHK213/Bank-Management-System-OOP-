@@ -93,6 +93,11 @@ public:
 	static void ShowManageUsersMenu() {
 
 		system("cls");
+
+		if (!CheckAccessRights(clsUser::enPermissions::pManageUsers)) {
+			return;
+		}
+
 		_DrawScreenHeader("\t\tManage Users Screen");
 
 		cout << setw(37) << left << "" << "========================================\n";
