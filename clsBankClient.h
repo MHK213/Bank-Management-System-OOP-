@@ -119,7 +119,60 @@ private:
 		AddDataLineToFile(_ConvertClientObjectToLine(*this));
 	}
 
+	string _PrepareTransferLogRecord(clsBankClient DestinationClient, double Amount, string UserName, string Seperator = "#//#") {
+		string TransferRecord = "";
+		TransferRecord = clsDate::GetSystemDateTimeString() + Seperator;
+		TransferRecord += AccountNumber() + Seperator;
+		TransferRecord += DestinationClient.AccountNumber() + Seperator;
+		TransferRecord += to_string(Amount) + Seperator;
+		TransferRecord += to_string(AccountBalance) + Seperator;
+		TransferRecord += to_string(DestinationClient.AccountBalance) + Seperator;
+		TransferRecord += UserName;
+
+		return TransferRecord;
+	}
+
+	void _RegisterTransferLog(double Amount, clsBankClient DestinationClient, string UserName) {
+		string stDataLine = _PrepareTransferLogRecord(DestinationClient, Amount, UserName);
+
+		fstream MyFile;
+		MyFile.open("TransferRegister.txt", ios::out | ios::app);
+
+		if (MyFile.is_open()) {
+			MyFile << stDataLine << endl;
+			MyFile.close();
+		}
+	}
+
+	struct stTransferLogRecord;
+	static stTransferLogRecord _ConvertTransferLogToRecord(string Line, string Seprator = "#//#") {
+
+		stTransferLogRecord TransferLogRecord;
+
+		vector <string> vTranfsers = clsString::Split(Line, Seprator);
+
+		TransferLogRecord.DateTime = vTranfsers[0];
+		TransferLogRecord.SourceAccNumber = vTranfsers[1];
+		TransferLogRecord.DestinationAccNumber = vTranfsers[2];
+		TransferLogRecord.Amount = stod(vTranfsers[3]);
+		TransferLogRecord.SourceBalance = stod(vTranfsers[4]);
+		TransferLogRecord.DestinationBalance = stod(vTranfsers[5]);
+		TransferLogRecord.UserName = vTranfsers[6];
+
+		return TransferLogRecord;
+	}
+
 public:
+	struct stTransferLogRecord {
+		string DateTime;
+		string SourceAccNumber;
+		string DestinationAccNumber;
+		double Amount;
+		double SourceBalance;
+		double DestinationBalance;
+		string UserName;
+	};
+
 	clsBankClient(enMode Mode, string FirstName, string LastName, string Email, string Phone, string AccountNumber, string PinCode, float AccountBalance)
 		: clsPerson(FirstName, LastName, Email, Phone) {
 		_Mode = Mode;
@@ -290,5 +343,39 @@ public:
 		else {
 			return false;
 		}
+	}
+
+	bool Transfer(double Amount, clsBankClient& DestinationClient, string UserName) {
+		if (Amount > AccountBalance)
+			return false;
+		
+		Withdraw(Amount);
+		DestinationClient.Deposit(Amount);
+		_RegisterTransferLog(Amount, DestinationClient, UserName);
+		return true;
+	}
+
+	static vector <stTransferLogRecord> GetTransferLogList() {
+
+		vector <stTransferLogRecord> vTransferLogRecord;
+
+		fstream MyFile;
+		MyFile.open("TransferRegister.txt", ios::in);
+
+		if (MyFile.is_open()) {
+
+			string Line;
+			stTransferLogRecord TransferLogRecord;
+
+			while (getline(MyFile, Line)) {
+
+				TransferLogRecord = _ConvertTransferLogToRecord(Line);
+				vTransferLogRecord.push_back(TransferLogRecord);
+			}
+
+			MyFile.close();
+		}
+
+		return vTransferLogRecord;
 	}
 };

@@ -4,6 +4,7 @@
 #include <iomanip>
 #include "clsBankClient.h"
 #include "clsScreen.h"
+#include "clsUser.h"
 
 using namespace std;
 
@@ -22,6 +23,11 @@ private:
 
 public:
 	static void ShowClientsList() {
+
+		if (!CheckAccessRights(clsUser::enPermissions::pListClients)) {
+			return;
+		}
+
 		vector <clsBankClient> vClients = clsBankClient::GetClientsList();
 		string Title = "\t\tClients List Screen";
 		string Subtitle = "\t\t  (" + to_string(vClients.size()) + ") Client(s).";

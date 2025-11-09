@@ -135,16 +135,16 @@ public:
         }
     }
 
-    static string EncryptText(string Text, short EncryptionKey) {
-        for (int i = 0; i < Text.length(); i++) {
-            Text[i] += EncryptionKey;
+    static string EncryptText(string Text, short EncryptionKey = 2) {
+        for (int i = 0; i <= Text.length(); i++) {
+            Text[i] = char((int) Text[i] + EncryptionKey);
         }
         return Text;
     }
 
-    static string DecryptText(string CryptedText, short EncryptionKey) {
-        for (int i = 0; i < CryptedText.length(); i++) {
-            CryptedText[i] -= EncryptionKey;
+    static string DecryptText(string CryptedText, short EncryptionKey = 2) {
+        for (int i = 0; i <= CryptedText.length(); i++) {
+            CryptedText[i] = char((int)CryptedText[i] - EncryptionKey);
         }
         return CryptedText;
     }

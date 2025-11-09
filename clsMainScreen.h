@@ -13,6 +13,7 @@
 #include "clsManageUsersScreen.h"
 #include "Global.h"
 #include "clsUser.h"
+#include "clsLoginRegisterScreen.h"
 
 using namespace std;
 
@@ -20,12 +21,12 @@ class clsMainScreen : protected clsScreen
 {
 private:
 	enum enMainMenuOption { enShowClientList = 1, enAddNewClient = 2, enDeleteClient = 3, enUpdateClient = 4,
-		enFindClient = 5, enTransactions = 6, enManageUsers = 7, Logout = 8 };
+		enFindClient = 5, enTransactions = 6, enManageUsers = 7, enLoginRegister = 8, Logout = 9 };
 
 	static enMainMenuOption _ReadMainMenuOption() {
 
-		cout << "\t\t\t\t     Choose What do you want to do? [1 to 8]? ";
-		short MainMenuChoice = clsInputValidate::ReadIntNumberBetween(1,8, "\nInvalid Number! Enter a Number between 1 and 8: ");
+		cout << "\t\t\t\t     Choose What do you want to do? [1 to 9]? ";
+		short MainMenuChoice = clsInputValidate::ReadIntNumberBetween(1,9, "\nInvalid Number! Enter a Number between 1 and 9: ");
 
 		return (enMainMenuOption)MainMenuChoice;
 
@@ -64,6 +65,10 @@ private:
 	static void _ShowManageUsersMenuScreen() {
 		clsManageUsersScreen::ShowManageUsersMenu();
 	};
+
+	static void _ShowLoginRegisterScreen() {
+		clsLoginRegisterScreen::ShowLoginRegisterList();
+	}
 
 	static void _Logout() {
 		CurrentUser = clsUser::FindUser("", "");
@@ -113,6 +118,12 @@ private:
 			_GoBackToMainMenu();
 			break;
 		}
+		case enLoginRegister: {
+			system("cls");
+			_ShowLoginRegisterScreen();
+			_GoBackToMainMenu();
+			break;
+		}
 		case Logout: {
 			system("cls");
 			_Logout();
@@ -137,7 +148,8 @@ public:
 		cout << setw(37) << left << "" << "\t[5] Find Client.\n";
 		cout << setw(37) << left << "" << "\t[6] Transactions.\n";
 		cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
-		cout << setw(37) << left << "" << "\t[8] Logout.\n";
+		cout << setw(37) << left << "" << "\t[8] Login Register.\n";
+		cout << setw(37) << left << "" << "\t[9] Logout.\n";
 		cout << setw(37) << left << "" << "========================================" << endl;
 
 		_PerformMainMenuOption(_ReadMainMenuOption());
