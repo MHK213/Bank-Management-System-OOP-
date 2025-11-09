@@ -3,7 +3,7 @@ In this project, I rebuilt my previous bank management system using object-orien
 
 The goal is to make the code more scalable, maintainable, and expandable by implementing OOP concepts such as encapsulation, inheritance, and abstraction. This also serves as training in OOP concepts to build a strong foundation for the next stage of learning (backend development using C#).
 
-The system is divided into three main sections: customer management, user management, and transactions. It is structured with multiple interactive interfaces on the application console.
+The system is divided into four main sections: customer management, user management, transactions and Login registers. It is structured with multiple interactive interfaces on the application console.
 
 The user interface code has been separated from the logical code into dedicated classes.
 
@@ -46,6 +46,9 @@ The project can be considered complete, although I am currently working on a cur
   - Displaying users list
   - Adding, deleting, editing, or searching for a client
   - Control permissions
+  ### 4 - LoginRegisters Interface:
+  Allows to:
+   - Login Register List
 
 ## Data Storage
 Customer and user information are stored in text files that act as a simple database.
