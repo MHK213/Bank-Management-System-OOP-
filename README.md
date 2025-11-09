@@ -26,6 +26,7 @@ The project can be considered complete, although I am currently working on a cur
   ### Authentication System
   - Login and logout functionality
   - Access control based on user permissions
+  - The system locked after 3 failed logins
 
 ## Interfaces Overview
   ### 1 - Main Interface:
