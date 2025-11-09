@@ -35,12 +35,15 @@ The project can be considered complete, although I am currently working on a cur
    - Adding, deleting, editing, or searching for a client
    - Transactions
    - Managing users
+   - Login Registers List
    - Logging out
   ### 2 - Transactions Interface:
   Provides functions for:
   - Withdrawals
   - Deposits
   - Checking balances
+  - Transfer
+  - Transfer log
   ### 3 - User Management Interface:
   Allows to:
   - Displaying users list
@@ -53,6 +56,7 @@ The project can be considered complete, although I am currently working on a cur
 ## Data Storage
 Customer and user information are stored in text files that act as a simple database.
 Each record is processed and updated directly from these files.
+User passwords are encrypted before being saved in the file.
 
 ## Project Structure
 The project is divided into multiple classes, each responsible for a specific part of the system.
