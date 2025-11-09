@@ -53,3 +53,4 @@ Each record is processed and updated directly from these files.
 ## Project Structure
 The project is divided into multiple classes, each responsible for a specific part of the system.
 Utilizes my custom C++ libraries i created (available on my GitHub account) for improved modularity and reusability
+I created `clsScreen.h` as a class where the header is drawn and inherited from all screens to be shared and achieve the principle of reusability.
