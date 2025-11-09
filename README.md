@@ -1,13 +1,15 @@
 # Bank Management System (OOP Version)
-In this project, I rebuilt my previous Bank Management System using Object-Oriented Programming (OOP) principles.
-The goal was to make the code more modular, maintainable, and scalable by applying OOP concepts such as encapsulation, inheritance, and abstraction.
+In this project, I rebuilt my previous bank management system using object-oriented programming (OOP) principles, adding nine new features.
 
-The system is divided into two main parts: Clients Management and Users Management, and it is structured into multiple interactive interfaces.
+The goal is to make the code more scalable, maintainable, and expandable by implementing OOP concepts such as encapsulation, inheritance, and abstraction. This also serves as training in OOP concepts to build a strong foundation for the next stage of learning (backend development using C#).
 
-The UI code was separated from the logic code into dedicated classes.
-This was done as a training and preparation step for future front-end and back-end separation, following good software architecture principles.
+The system is divided into three main sections: customer management, user management, and transactions. It is structured with multiple interactive interfaces on the application console.
 
-The project is incomplete;
+The user interface code has been separated from the logical code into dedicated classes.
+
+This was done as a training and preparation step for separating the front-end and back-end in the future, following good software engineering principles.
+
+The project can be considered complete, although I am currently working on a currency exchange extension.
 
 ## Features:
   ### Clients Management
