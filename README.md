@@ -52,6 +52,11 @@ The project can be considered complete, although I am currently working on a cur
   ### 4 - LoginRegisters Interface:
   Allows to:
    - Login Register List
+  ### 5 - Currency Exchange Interface:
+  - List Currencies
+  - Find Currency
+  - Update Rate
+  - Currency Calculator 
 
 ## Data Storage
 Customer and user information are stored in text files that act as a simple database.
